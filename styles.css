@@ -1,0 +1,115 @@
+/* ReviewPinas — Philippine flag palette
+   Blue #0038A8 · Sun gold #FCD116 · Red #CE1126
+   Display: Poppins · Body: Inter · Data: IBM Plex Mono */
+:root {
+  --ph-blue:   #0038A8;
+  --ph-blue-d: #002a7e;
+  --ph-blue-l: #eaf0fc;
+  --sun:       #FCD116;
+  --sun-deep:  #c99e00;
+  --sun-soft:  #fff7d6;
+  --ph-red:    #CE1126;
+  --paper:     #f7f9fe;
+  --card:      #ffffff;
+  --ink:       #14213d;
+  --ink-soft:  #55607a;
+  --line:      #dfe6f3;
+  --good:      #15803d;
+  --bad:       #CE1126;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.55;
+}
+.page { max-width: 720px; margin: 0 auto; padding: 20px 16px 48px; }
+
+/* Masthead */
+.masthead { display: flex; align-items: center; gap: 14px; padding: 8px 0 20px; }
+.seal {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--ph-blue); color: var(--sun);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.seal svg { width: 34px; height: 34px; }
+.masthead h1 { font-family: Poppins, sans-serif; font-weight: 700; font-size: 24px; margin: 0; color: var(--ph-blue); }
+.tagline { margin: 2px 0 0; color: var(--ink-soft); font-size: 13px; }
+
+/* Cards */
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px; box-shadow: 0 1px 3px rgba(0, 56, 168, 0.07);
+}
+.hero { border-top: 4px solid var(--sun); }
+.hero h2 { font-family: Poppins, sans-serif; font-weight: 700; font-size: 25px; margin: 6px 0 10px; color: var(--ph-blue); }
+.hero .gold { color: var(--sun-deep); }
+.sub { color: var(--ink-soft); margin: 0; }
+.eyebrow {
+  font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ph-red); margin: 0 0 4px;
+}
+
+/* Subject grid */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.subject { text-align: left; cursor: pointer; transition: border-color .15s, transform .15s; }
+.subject:hover { border-color: var(--ph-blue); transform: translateY(-1px); }
+.subject h3 { font-family: Poppins, sans-serif; font-weight: 600; margin: 0 0 6px; color: var(--ph-blue); font-size: 16px; }
+.subject p { margin: 0 0 10px; font-size: 13px; color: var(--ink-soft); }
+.count { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--sun-deep); font-weight: 600; }
+@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+
+/* Quiz */
+.quiz-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.linklike { background: none; border: none; color: var(--ph-blue); cursor: pointer; font-size: 14px; padding: 0; }
+.counter { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--ink-soft); }
+.progress { height: 5px; background: var(--line); border-radius: 3px; margin-bottom: 16px; overflow: hidden; }
+.progress div { height: 100%; background: var(--sun); transition: width .3s; }
+.question { font-family: Poppins, sans-serif; font-weight: 600; font-size: 18px; margin: 4px 0 16px; color: var(--ink); }
+.options { display: grid; gap: 8px; }
+.option {
+  display: flex; align-items: baseline; gap: 10px; text-align: left;
+  padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px;
+  background: var(--card); cursor: pointer; font-size: 15px; font-family: inherit;
+  transition: border-color .12s;
+}
+.option:hover:not(:disabled) { border-color: var(--ph-blue); }
+.option:disabled { cursor: default; }
+.option.correct { border-color: var(--good); background: #f0fdf4; }
+.option.wrong { border-color: var(--bad); background: #fef2f2; }
+.opt-letter {
+  font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 600;
+  color: var(--ph-blue); flex-shrink: 0;
+}
+.explain {
+  margin-top: 14px; padding: 12px 14px; border-radius: 10px;
+  background: var(--sun-soft); border-left: 3px solid var(--sun); border-radius: 0 10px 10px 0;
+  font-size: 14px;
+}
+.explain.good { background: #f0fdf4; border-left-color: var(--good); }
+.btn {
+  background: var(--ph-blue); color: #fff; border: none; border-radius: 10px;
+  padding: 12px 18px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+}
+.btn:hover { background: var(--ph-blue-d); }
+.btn.wide { width: 100%; margin-top: 14px; }
+.btn.ghost { background: transparent; color: var(--ph-blue); border: 1.5px solid var(--ph-blue); }
+.row { display: flex; gap: 10px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+
+/* Result */
+.result { text-align: center; }
+.gauge { width: 220px; max-width: 100%; margin: 8px auto 0; display: block; }
+.gauge-pass { font-family: "IBM Plex Mono", monospace; font-size: 10px; fill: var(--ink-soft); }
+.score { font-family: Poppins, sans-serif; font-weight: 700; font-size: 44px; margin: 4px 0; color: var(--ph-blue); }
+.verdict { color: var(--ink-soft); margin: 0 0 6px; }
+.verdict.pass { color: var(--good); font-weight: 600; }
+
+footer { margin-top: 28px; }
+footer p { font-size: 12px; color: var(--ink-soft); text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
