@@ -1,0 +1,117 @@
+{
+  "subject": "Verbal Ability",
+  "id": "verbal",
+  "description": "Vocabulary, grammar, analogy, and reading.",
+  "questions": [
+    {
+      "q": "Choose the word most similar in meaning to CANDID.",
+      "options": [
+        "Secretive",
+        "Honest",
+        "Careful",
+        "Polite"
+      ],
+      "answer": 1,
+      "explanation": "Candid means frank and honest."
+    },
+    {
+      "q": "Choose the word most similar in meaning to DILIGENT.",
+      "options": [
+        "Lazy",
+        "Hardworking",
+        "Talented",
+        "Quiet"
+      ],
+      "answer": 1,
+      "explanation": "Diligent means showing steady, careful effort."
+    },
+    {
+      "q": "Complete the analogy: Thermometer is to temperature as clock is to ____.",
+      "options": [
+        "alarm",
+        "numbers",
+        "time",
+        "wall"
+      ],
+      "answer": 2,
+      "explanation": "A thermometer measures temperature; a clock measures time."
+    },
+    {
+      "q": "Complete the analogy: Author is to book as sculptor is to ____.",
+      "options": [
+        "museum",
+        "statue",
+        "chisel",
+        "stone"
+      ],
+      "answer": 1,
+      "explanation": "An author creates a book; a sculptor creates a statue."
+    },
+    {
+      "q": "Choose the correctly written sentence.",
+      "options": [
+        "Each of the employees have submitted their report.",
+        "Each of the employees has submitted a report.",
+        "Each of the employees were submitting reports.",
+        "Each of the employees submit a report."
+      ],
+      "answer": 1,
+      "explanation": "\"Each\" is singular, so it takes the singular verb \"has.\""
+    },
+    {
+      "q": "Choose the word OPPOSITE in meaning to EXPAND.",
+      "options": [
+        "Enlarge",
+        "Contract",
+        "Extend",
+        "Spread"
+      ],
+      "answer": 1,
+      "explanation": "To contract is to become smaller — the opposite of expand."
+    },
+    {
+      "q": "Identify the misspelled word.",
+      "options": [
+        "Occasion",
+        "Committee",
+        "Accomodate",
+        "Privilege"
+      ],
+      "answer": 2,
+      "explanation": "Correct spelling is \"accommodate\" — two c's and two m's."
+    },
+    {
+      "q": "The report was concise. \"Concise\" means:",
+      "options": [
+        "long and detailed",
+        "brief but complete",
+        "confusing",
+        "informal"
+      ],
+      "answer": 1,
+      "explanation": "Concise means giving much information clearly in few words."
+    },
+    {
+      "q": "Choose the correct sentence.",
+      "options": [
+        "Neither the manager nor the staff were informed.",
+        "Neither the manager nor the staff was informed.",
+        "Neither the manager or the staff was informed.",
+        "Neither of the manager nor staff were informed."
+      ],
+      "answer": 1,
+      "explanation": "With \"neither…nor,\" the verb agrees with the nearer subject; \"staff\" as a unit takes \"was.\" (\"or\" is incorrect with \"neither.\")"
+    },
+    {
+      "q": "Complete: The applicant's credentials are impressive; ____, she lacks field experience.",
+      "options": [
+        "therefore",
+        "however",
+        "moreover",
+        "likewise"
+      ],
+      "answer": 1,
+      "explanation": "The second clause contrasts with the first, so \"however\" fits."
+    }
+  ]
+}

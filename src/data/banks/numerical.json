@@ -1,0 +1,172 @@
+{
+  "subject": "Numerical Ability",
+  "id": "numerical",
+  "description": "Arithmetic, fractions, percent, ratio, and problem solving.",
+  "questions": [
+    {
+      "q": "A vendor sells 15 boxes at ₱8 each and buys 12 boxes at ₱6 each. What is his net amount?",
+      "options": [
+        "₱42",
+        "₱48",
+        "₱52",
+        "₱60"
+      ],
+      "answer": 1,
+      "explanation": "Sales: 15 × 8 = ₱120. Purchases: 12 × 6 = ₱72. Net: 120 − 72 = ₱48."
+    },
+    {
+      "q": "What is 3/4 + 2/5?",
+      "options": [
+        "1 1/20",
+        "1 3/20",
+        "1 1/9",
+        "23/40"
+      ],
+      "answer": 1,
+      "explanation": "LCD is 20: 15/20 + 8/20 = 23/20 = 1 3/20."
+    },
+    {
+      "q": "What is 35% of 480?",
+      "options": [
+        "148",
+        "158",
+        "168",
+        "178"
+      ],
+      "answer": 2,
+      "explanation": "480 × 0.35 = 168."
+    },
+    {
+      "q": "Two numbers are in the ratio 3:5 and their sum is 96. What is the larger number?",
+      "options": [
+        "36",
+        "48",
+        "60",
+        "64"
+      ],
+      "answer": 2,
+      "explanation": "3 + 5 = 8 parts. 96 ÷ 8 = 12 per part. Larger: 5 × 12 = 60."
+    },
+    {
+      "q": "Find the next number: 2, 6, 12, 20, 30, ___",
+      "options": [
+        "36",
+        "40",
+        "42",
+        "44"
+      ],
+      "answer": 2,
+      "explanation": "Differences increase by 2: +4, +6, +8, +10, so next is +12 → 42."
+    },
+    {
+      "q": "A bus travels 240 km in 3 hours. What is its average speed?",
+      "options": [
+        "60 km/h",
+        "70 km/h",
+        "80 km/h",
+        "90 km/h"
+      ],
+      "answer": 2,
+      "explanation": "Speed = distance ÷ time = 240 ÷ 3 = 80 km/h."
+    },
+    {
+      "q": "A ₱1,250 jacket is sold at a 20% discount. What is the sale price?",
+      "options": [
+        "₱1,000",
+        "₱1,050",
+        "₱1,100",
+        "₱950"
+      ],
+      "answer": 0,
+      "explanation": "Discount: 1,250 × 0.20 = ₱250. Sale price: 1,250 − 250 = ₱1,000."
+    },
+    {
+      "q": "The scores of a student are 78, 85, 92, 81, and 89. What is the average?",
+      "options": [
+        "83",
+        "84",
+        "85",
+        "86"
+      ],
+      "answer": 2,
+      "explanation": "Sum = 425. Average = 425 ÷ 5 = 85."
+    },
+    {
+      "q": "Ana can finish a task in 6 days; Ben in 12 days. Working together, how many days will they take?",
+      "options": [
+        "3 days",
+        "4 days",
+        "5 days",
+        "9 days"
+      ],
+      "answer": 1,
+      "explanation": "Combined rate: 1/6 + 1/12 = 3/12 = 1/4 of the task per day → 4 days."
+    },
+    {
+      "q": "A price rose from ₱60 to ₱69. What is the percent increase?",
+      "options": [
+        "9%",
+        "12%",
+        "15%",
+        "18%"
+      ],
+      "answer": 2,
+      "explanation": "Increase: 9. Percent: 9 ÷ 60 × 100 = 15%."
+    },
+    {
+      "q": "From ₱1,800, Mia spends 2/3 and saves 1/4 of what remains. How much does she save?",
+      "options": [
+        "₱150",
+        "₱200",
+        "₱300",
+        "₱450"
+      ],
+      "answer": 0,
+      "explanation": "Spent: 1,200. Remainder: 600. Saved: 600 × 1/4 = ₱150."
+    },
+    {
+      "q": "How much simple interest does ₱5,000 earn at 6% per year for 2 years?",
+      "options": [
+        "₱300",
+        "₱500",
+        "₱600",
+        "₱720"
+      ],
+      "answer": 2,
+      "explanation": "I = P × r × t = 5,000 × 0.06 × 2 = ₱600."
+    },
+    {
+      "q": "Two bells ring every 12 and 18 minutes. If they ring together now, after how many minutes will they ring together again?",
+      "options": [
+        "24",
+        "30",
+        "36",
+        "54"
+      ],
+      "answer": 2,
+      "explanation": "LCM of 12 and 18 is 36."
+    },
+    {
+      "q": "If 3x − 7 = 20, what is x?",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer": 2,
+      "explanation": "3x = 27, so x = 9."
+    },
+    {
+      "q": "A rectangular lot is 15 m long and 8 m wide. What is its area?",
+      "options": [
+        "46 m²",
+        "110 m²",
+        "120 m²",
+        "130 m²"
+      ],
+      "answer": 2,
+      "explanation": "Area = length × width = 15 × 8 = 120 m²."
+    }
+  ]
+}

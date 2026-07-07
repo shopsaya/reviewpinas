@@ -1,0 +1,117 @@
+{
+  "subject": "Analytical Ability",
+  "id": "analytical",
+  "description": "Logic, series, and deductive reasoning.",
+  "questions": [
+    {
+      "q": "All clerks in the office are college graduates. Rosa is a clerk in the office. Therefore:",
+      "options": [
+        "Rosa may be a college graduate",
+        "Rosa is a college graduate",
+        "Rosa is not a college graduate",
+        "No conclusion is possible"
+      ],
+      "answer": 1,
+      "explanation": "Valid syllogism: all clerks are graduates, Rosa is a clerk, so Rosa is a graduate."
+    },
+    {
+      "q": "Find the next in the series: A, C, F, J, O, ___",
+      "options": [
+        "S",
+        "T",
+        "U",
+        "V"
+      ],
+      "answer": 1,
+      "explanation": "Gaps grow by one letter: +2, +3, +4, +5, then +6 → T."
+    },
+    {
+      "q": "Five people sit in a row. Jo is not at either end. Ben is at the far left. Mia sits beside Ben. Who is second from the left?",
+      "options": [
+        "Jo",
+        "Mia",
+        "Cannot be determined",
+        "Ben"
+      ],
+      "answer": 1,
+      "explanation": "Ben is leftmost and Mia is beside him, so Mia is second from the left."
+    },
+    {
+      "q": "If the statement \"All reports were submitted on time\" is FALSE, which must be TRUE?",
+      "options": [
+        "No reports were submitted on time",
+        "Most reports were late",
+        "At least one report was not submitted on time",
+        "All reports were late"
+      ],
+      "answer": 2,
+      "explanation": "The negation of \"all\" is \"at least one was not\" — not \"none\" or \"all late.\""
+    },
+    {
+      "q": "Pedro is taller than Juan. Juan is taller than Luis. Carlo is taller than Pedro. Who is shortest?",
+      "options": [
+        "Pedro",
+        "Juan",
+        "Luis",
+        "Carlo"
+      ],
+      "answer": 2,
+      "explanation": "Order: Carlo > Pedro > Juan > Luis. Luis is shortest."
+    },
+    {
+      "q": "Which number does NOT belong: 3, 5, 7, 9, 11?",
+      "options": [
+        "3",
+        "5",
+        "9",
+        "11"
+      ],
+      "answer": 2,
+      "explanation": "All are odd, but 9 is the only one that is not a prime number."
+    },
+    {
+      "q": "A code shifts each letter forward by 2 (A→C). What is the code for \"BAG\"?",
+      "options": [
+        "DCI",
+        "CBI",
+        "DBI",
+        "CCH"
+      ],
+      "answer": 0,
+      "explanation": "B→D, A→C, G→I, giving DCI."
+    },
+    {
+      "q": "If today is Wednesday, what day will it be 100 days from now?",
+      "options": [
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "answer": 1,
+      "explanation": "100 ÷ 7 leaves remainder 2, so two days after Wednesday is Friday."
+    },
+    {
+      "q": "Statement: Some government employees are teachers. All teachers are licensed. Which conclusion follows?",
+      "options": [
+        "All government employees are licensed",
+        "Some government employees are licensed",
+        "No government employee is licensed",
+        "All licensed people are teachers"
+      ],
+      "answer": 1,
+      "explanation": "The employees who are teachers must be licensed, so some employees are licensed."
+    },
+    {
+      "q": "Complete the pattern: 1, 1, 2, 3, 5, 8, ___",
+      "options": [
+        "11",
+        "12",
+        "13",
+        "15"
+      ],
+      "answer": 2,
+      "explanation": "Fibonacci: each number is the sum of the previous two; 5 + 8 = 13."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "subject": "General Information",
+  "id": "general-info",
+  "description": "Constitution, RA 6713, and Philippine government.",
+  "questions": [
+    {
+      "q": "The present Constitution of the Philippines was ratified in what year?",
+      "options": [
+        "1973",
+        "1986",
+        "1987",
+        "1992"
+      ],
+      "answer": 2,
+      "explanation": "The 1987 Constitution was ratified in the February 2, 1987 plebiscite."
+    },
+    {
+      "q": "RA 6713 is known as the:",
+      "options": [
+        "Government Procurement Reform Act",
+        "Code of Conduct and Ethical Standards for Public Officials and Employees",
+        "Anti-Red Tape Act",
+        "Local Government Code"
+      ],
+      "answer": 1,
+      "explanation": "RA 6713 (1989) sets the code of conduct and ethical standards for public officials and employees."
+    },
+    {
+      "q": "How many members compose the Philippine Senate?",
+      "options": [
+        "12",
+        "24",
+        "250",
+        "30"
+      ],
+      "answer": 1,
+      "explanation": "The Constitution provides for 24 senators elected at large."
+    },
+    {
+      "q": "The term of office of the President of the Philippines is:",
+      "options": [
+        "4 years, with reelection",
+        "6 years, without reelection",
+        "6 years, with one reelection",
+        "5 years, without reelection"
+      ],
+      "answer": 1,
+      "explanation": "Art. VII: the President serves six years and is not eligible for any reelection."
+    },
+    {
+      "q": "Which branch of government has the power to interpret laws?",
+      "options": [
+        "Executive",
+        "Legislative",
+        "Judicial",
+        "Constitutional Commissions"
+      ],
+      "answer": 2,
+      "explanation": "Judicial power is vested in the Supreme Court and lower courts."
+    },
+    {
+      "q": "Under RA 6713, public officials must file a sworn statement of their assets and liabilities known as the:",
+      "options": [
+        "ITR",
+        "SALN",
+        "PDS",
+        "GSIS record"
+      ],
+      "answer": 1,
+      "explanation": "The Statement of Assets, Liabilities and Net Worth (SALN) is required by RA 6713."
+    },
+    {
+      "q": "The constitutional body in charge of civil service examinations is the:",
+      "options": [
+        "COMELEC",
+        "Commission on Audit",
+        "Civil Service Commission",
+        "Ombudsman"
+      ],
+      "answer": 2,
+      "explanation": "The CSC is the central personnel agency of the government."
+    },
+    {
+      "q": "Members of the House of Representatives serve a term of:",
+      "options": [
+        "2 years",
+        "3 years",
+        "4 years",
+        "6 years"
+      ],
+      "answer": 1,
+      "explanation": "Art. VI: representatives serve three-year terms, up to three consecutive terms."
+    },
+    {
+      "q": "Which principle is stated in Art. II of the Constitution: \"The Philippines is a ____ and republican State\"?",
+      "options": [
+        "parliamentary",
+        "democratic",
+        "unitary",
+        "federal"
+      ],
+      "answer": 1,
+      "explanation": "Art. II, Sec. 1: \"The Philippines is a democratic and republican State.\""
+    },
+    {
+      "q": "Under RA 6713, public servants must process papers and respond to letters within how many working days?",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "RA 6713 Sec. 5(a) requires a reply to letters/requests within fifteen (15) working days."
+    }
+  ]
+}
