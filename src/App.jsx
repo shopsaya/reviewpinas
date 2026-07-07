@@ -164,6 +164,20 @@ export default function App() {
               {total} original na tanong with explanations, patterned after the CSC
               Professional exam scope. Pumili ng subject — shuffled every time.
             </p>
+            <svg className="flagmark" viewBox="0 0 300 200" aria-hidden="true">
+              <rect x="0" y="0" width="300" height="100" fill="#0038A8" />
+              <rect x="0" y="100" width="300" height="100" fill="#CE1126" />
+              <polygon points="0,0 173,100 0,200" fill="#ffffff" />
+              <g fill="#FCD116">
+                <circle cx="62" cy="100" r="17" />
+                {[0, 45, 90, 135, 180, 225, 270, 315].map((d) => (
+                  <polygon key={d} points="62,68 58,84 66,84" transform={`rotate(${d} 62 100)`} />
+                ))}
+                <polygon points="20.0,13.0 22.1,19.1 28.6,19.2 23.4,23.1 25.3,29.3 20.0,25.6 14.7,29.3 16.6,23.1 11.4,19.2 17.9,19.1" />
+                <polygon points="20.0,169.0 22.1,175.1 28.6,175.2 23.4,179.1 25.3,185.3 20.0,181.6 14.7,185.3 16.6,179.1 11.4,175.2 17.9,175.1" />
+                <polygon points="140.0,91.0 142.1,97.1 148.6,97.2 143.4,101.1 145.3,107.3 140.0,103.6 134.7,107.3 136.6,101.1 131.4,97.2 137.9,97.1" />
+              </g>
+            </svg>
             <div className="sheet" aria-hidden="true">
               {["A", "B", "C", "D"].map((l, i) => (
                 <span key={l} className={i === 2 ? "bubble shade" : "bubble"}>{l}</span>
@@ -188,6 +202,7 @@ export default function App() {
       )}
 
       <footer>
+        <div className="tricolor" aria-hidden="true"><span /><span /><span /></div>
         <p>
           ReviewPinas is an independent study tool by MSB IT Solutions. It is
           not affiliated with or endorsed by the Civil Service Commission. All

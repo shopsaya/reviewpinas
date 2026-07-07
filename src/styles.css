@@ -181,3 +181,21 @@ footer p { font-size: 12px; color: var(--ink-soft); text-align: center; }
 @media (max-width: 520px) {
   .hero h2 { font-size: 28px; }
 }
+
+/* ── Flag motif ── */
+.flagmark {
+  position: absolute; right: -30px; top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  width: 280px; opacity: 0.13; pointer-events: none;
+}
+.hero > *:not(.flagmark) { position: relative; z-index: 1; }
+@media (max-width: 520px) {
+  .flagmark { width: 200px; right: -50px; opacity: 0.10; }
+}
+.tricolor {
+  display: flex; height: 4px; border-radius: 2px; overflow: hidden;
+  max-width: 220px; margin: 0 auto 14px;
+}
+.tricolor span:nth-child(1) { flex: 1; background: var(--ph-blue); }
+.tricolor span:nth-child(2) { flex: 1; background: var(--ph-red); }
+.tricolor span:nth-child(3) { flex: 1; background: var(--sun); }
