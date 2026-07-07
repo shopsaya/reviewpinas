@@ -34,7 +34,7 @@ function Gauge({ pct }) {
       <path d="M 12 100 A 88 88 0 0 1 188 100" fill="none"
         stroke="var(--line)" strokeWidth="14" strokeLinecap="round" />
       <path d="M 12 100 A 88 88 0 0 1 188 100" fill="none"
-        stroke={passed ? "var(--gold)" : "var(--indigo-3)"} strokeWidth="14"
+        stroke={passed ? "var(--sun)" : "var(--ph-blue)"} strokeWidth="14"
         strokeLinecap="round" strokeDasharray={`${(angle / 180) * 276} 276`} />
       <line x1={px1} y1={py1} x2={px2} y2={py2}
         stroke="var(--ink-soft)" strokeWidth="2" strokeDasharray="4 3" />
@@ -136,7 +136,17 @@ export default function App() {
   return (
     <div className="page">
       <header className="masthead">
-        <div className="seal" aria-hidden="true">R</div>
+        <div className="seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="currentColor">
+            <circle cx="50" cy="50" r="16" />
+            <g>
+              {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+                <polygon key={deg} points="50,4 45,26 55,26"
+                  transform={`rotate(${deg} 50 50)`} />
+              ))}
+            </g>
+          </svg>
+        </div>
         <div>
           <h1>ReviewPinas</h1>
           <p className="tagline">Libreng CSC reviewer · walang sign-up · works offline</p>
