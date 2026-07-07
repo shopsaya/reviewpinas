@@ -157,18 +157,27 @@ export default function App() {
         <Quiz bank={bank} onExit={() => setBank(null)} />
       ) : (
         <main>
-          <section className="hero card">
+          <section className="hero">
             <p className="eyebrow">Civil Service Examination</p>
-            <h2>Practice like the real thing. Pass at <span className="gold">80%</span>.</h2>
+            <h2>Kaya mo &lsquo;to.<br />Pasado at <span className="gold">80%</span>.</h2>
             <p className="sub">
-              {total} original questions with explanations, patterned after the CSC
-              Professional exam scope. Pick a subject to start — your quiz is
-              shuffled every time.
+              {total} original na tanong with explanations, patterned after the CSC
+              Professional exam scope. Pumili ng subject — shuffled every time.
             </p>
+            <div className="sheet" aria-hidden="true">
+              {["A", "B", "C", "D"].map((l, i) => (
+                <span key={l} className={i === 2 ? "bubble shade" : "bubble"}>{l}</span>
+              ))}
+              <span className="sheet-note">shade your answer</span>
+            </div>
+            <div className="stats">
+              <span>{total} tanong</span><span>4 subjects</span><span>80% passing</span><span>100% libre</span>
+            </div>
           </section>
           <section className="grid">
-            {BANKS.map((b) => (
+            {BANKS.map((b, i) => (
               <button key={b.id} className="subject card" onClick={() => setBank(b)}>
+                <span className="sbubble" aria-hidden="true">{"ABCD"[i]}</span>
                 <h3>{b.subject}</h3>
                 <p>{b.description}</p>
                 <span className="count">{b.questions.length} questions →</span>

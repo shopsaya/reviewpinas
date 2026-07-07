@@ -71,7 +71,7 @@ body {
 .question { font-family: Poppins, sans-serif; font-weight: 600; font-size: 18px; margin: 4px 0 16px; color: var(--ink); }
 .options { display: grid; gap: 8px; }
 .option {
-  display: flex; align-items: baseline; gap: 10px; text-align: left;
+  display: flex; align-items: center; gap: 12px; text-align: left;
   padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px;
   background: var(--card); cursor: pointer; font-size: 15px; font-family: inherit;
   transition: border-color .12s;
@@ -81,9 +81,14 @@ body {
 .option.correct { border-color: var(--good); background: #f0fdf4; }
 .option.wrong { border-color: var(--bad); background: #fef2f2; }
 .opt-letter {
-  font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 600;
-  color: var(--ph-blue); flex-shrink: 0;
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1.5px solid var(--ph-blue);
+  display: grid; place-items: center; align-self: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500;
+  color: var(--ph-blue); flex-shrink: 0; transition: background .12s, color .12s;
 }
+.option.correct .opt-letter { background: var(--good); border-color: var(--good); color: #fff; }
+.option.wrong .opt-letter { background: var(--bad); border-color: var(--bad); color: #fff; }
 .explain {
   margin-top: 14px; padding: 12px 14px; border-radius: 10px;
   background: var(--sun-soft); border-left: 3px solid var(--sun); border-radius: 0 10px 10px 0;
@@ -111,5 +116,68 @@ footer { margin-top: 28px; }
 footer p { font-size: 12px; color: var(--ink-soft); text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  * { transition: none !important; animation: none !important; }
+  .bubble.shade { background: var(--sun); border-color: var(--sun); color: var(--ph-blue-d); }
+}
+
+/* ── Scantron signature ── */
+.hero {
+  background: var(--ph-blue);
+  border: none; border-radius: 16px;
+  padding: 28px 24px;
+  color: #fff;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 5px; background: var(--sun);
+}
+.hero .eyebrow { color: var(--sun); }
+.hero h2 {
+  font-family: Poppins, sans-serif; font-weight: 800; font-size: 34px;
+  line-height: 1.12; letter-spacing: -0.01em; margin: 8px 0 12px; color: #fff;
+}
+.hero .gold { color: var(--sun); }
+.hero .sub { color: rgba(255,255,255,0.82); font-size: 15px; max-width: 46ch; }
+.sheet { display: flex; align-items: center; gap: 10px; margin: 20px 0 4px; }
+.bubble {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.45);
+  display: grid; place-items: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.75);
+}
+.bubble.shade {
+  animation: shadein 0.5s ease 0.9s forwards;
+}
+@keyframes shadein {
+  to { background: var(--sun); border-color: var(--sun); color: var(--ph-blue-d); }
+}
+.sheet-note {
+  font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  color: rgba(255,255,255,0.55); margin-left: 6px; letter-spacing: 0.06em;
+}
+.stats {
+  display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px;
+  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.18);
+  font-family: "IBM Plex Mono", monospace; font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+.sbubble {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2px solid; display: grid; place-items: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500;
+  margin-bottom: 10px; transition: background .15s, color .15s;
+}
+.subject:nth-child(1) .sbubble { color: var(--ph-blue); border-color: var(--ph-blue); }
+.subject:nth-child(2) .sbubble { color: var(--ph-red); border-color: var(--ph-red); }
+.subject:nth-child(3) .sbubble { color: var(--sun-deep); border-color: var(--sun-deep); }
+.subject:nth-child(4) .sbubble { color: var(--ph-blue-d); border-color: var(--ph-blue-d); }
+.subject:nth-child(1):hover .sbubble { background: var(--ph-blue); color: #fff; }
+.subject:nth-child(2):hover .sbubble { background: var(--ph-red); color: #fff; }
+.subject:nth-child(3):hover .sbubble { background: var(--sun-deep); color: #fff; }
+.subject:nth-child(4):hover .sbubble { background: var(--ph-blue-d); color: #fff; }
+
+@media (max-width: 520px) {
+  .hero h2 { font-size: 28px; }
 }
