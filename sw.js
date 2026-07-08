@@ -1,5 +1,5 @@
 // Simple offline-first shell cache. Bump VERSION on each deploy to refresh.
-const VERSION = "reviewpinas-v10";
+const VERSION = "reviewpinas-v11";
 const SHELL = ["/", "/index.html", "/manifest.webmanifest"];
 
 self.addEventListener("install", (e) => {
