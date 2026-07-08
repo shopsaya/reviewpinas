@@ -3,9 +3,36 @@ import numerical from "./data/banks/numerical.json";
 import verbal from "./data/banks/verbal.json";
 import analytical from "./data/banks/analytical.json";
 import geninfo from "./data/banks/general-info.json";
+import letGened from "./data/banks/let-gened.json";
+import letProfed from "./data/banks/let-profed.json";
+import crim from "./data/banks/crim.json";
 
-const BANKS = [numerical, analytical, verbal, geninfo];
+const EXAMS = [
+  { id: "csc", name: "Civil Service Exam", agency: "CSC",
+    desc: "Professional level — numerical, analytical, verbal, general info.",
+    banks: [numerical, analytical, verbal, geninfo] },
+  { id: "let", name: "Teachers (LET)", agency: "PRC",
+    desc: "Licensure Examination for Teachers — Gen Ed and Prof Ed.",
+    banks: [letGened, letProfed] },
+  { id: "crim", name: "Criminology (CLE)", agency: "PRC",
+    desc: "Criminologists Licensure Examination fundamentals.",
+    banks: [crim] },
+  { id: "nursing", name: "Nursing (NLE)", agency: "PRC", soon: true,
+    desc: "Nurse Licensure Examination — coming soon.", banks: [] },
+  { id: "engg", name: "Civil Engineering", agency: "PRC", soon: true,
+    desc: "CE Board Examination — coming soon.", banks: [] },
+  { id: "cpa", name: "Accountancy (CPALE)", agency: "PRC", soon: true,
+    desc: "CPA Licensure Examination — coming soon.", banks: [] },
+];
 const PASS = 80; // CSC Professional passing rate
+
+const HKEY = "rp-history";
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(HKEY)) || []; } catch { return []; }
+}
+function saveHistory(list) {
+  try { localStorage.setItem(HKEY, JSON.stringify(list.slice(0, 50))); } catch { /* private mode */ }
+}
 
 function shuffle(arr) {
   const a = [...arr];
@@ -48,7 +75,7 @@ function Gauge({ pct }) {
 }
 
 // ── Quiz ──────────────────────────────────────────────────────────────────────
-function Quiz({ bank, onExit }) {
+function Quiz({ bank, onExit, onFinish }) {
   const questions = useMemo(() => shuffle(bank.questions), [bank]);
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState(null);
@@ -64,7 +91,16 @@ function Quiz({ bank, onExit }) {
     setAnswers((a) => [...a, { correct: idx === q.answer }]);
   };
   const next = () => {
-    if (i + 1 >= questions.length) return setDone(true);
+    if (i + 1 >= questions.length) {
+      const right = answers.filter((a) => a.correct).length;
+      onFinish({
+        id: bank.id, subject: bank.subject,
+        right, total: questions.length,
+        pct: Math.round((right / questions.length) * 100),
+        ts: Date.now(),
+      });
+      return setDone(true);
+    }
     setI(i + 1);
     setPicked(null);
   };
@@ -146,8 +182,19 @@ function Quiz({ bank, onExit }) {
 
 // ── App ───────────────────────────────────────────────────────────────────────
 export default function App() {
+  const [exam, setExam] = useState(null);
   const [bank, setBank] = useState(null);
-  const total = BANKS.reduce((n, b) => n + b.questions.length, 0);
+  const [history, setHistory] = useState(loadHistory);
+  const total = EXAMS.reduce((n, e) => n + e.banks.reduce((m, b) => m + b.questions.length, 0), 0);
+  const addResult = (entry) => {
+    setHistory((h) => { const next = [entry, ...h]; saveHistory(next); return next; });
+  };
+  const clearHistory = () => { setHistory([]); saveHistory([]); };
+  const bestFor = (id) => {
+    const scores = history.filter((h) => h.id === id).map((h) => h.pct);
+    return scores.length ? Math.max(...scores) : null;
+  };
+  const fmtDate = (ts) => new Date(ts).toLocaleDateString("en-PH", { month: "short", day: "numeric" });
 
   return (
     <div className="page">
@@ -165,20 +212,48 @@ export default function App() {
         </div>
         <div>
           <h1>ReviewPinas</h1>
-          <p className="tagline">Free CSC reviewer · no sign-up · works offline</p>
+          <p className="tagline">Free PH exam reviewers · no sign-up · works offline</p>
         </div>
       </header>
 
       {bank ? (
-        <Quiz bank={bank} onExit={() => setBank(null)} />
+        <Quiz bank={bank} onExit={() => setBank(null)} onFinish={addResult} />
+      ) : exam ? (
+        <main>
+          <div className="quiz-top">
+            <button className="linklike" onClick={() => setExam(null)}>← All exams</button>
+            <span className="counter">{exam.agency}</span>
+          </div>
+          <section className="hero">
+            <p className="eyebrow">{exam.agency} · {exam.name}</p>
+            <h2>Pass at <span className="gold">80%</span>.</h2>
+            <p className="sub">{exam.desc}</p>
+          </section>
+          <p className="pick">PICK A SUBJECT</p>
+          <section className="grid">
+            {exam.banks.map((b, i) => (
+              <button key={b.id} className="subject card" onClick={() => setBank(b)}>
+                <span className="sbubble" aria-hidden="true">{"ABCD"[i % 4]}</span>
+                {bestFor(b.id) !== null && (
+                  <span className={bestFor(b.id) >= PASS ? "best pass" : "best"}>
+                    Best: {bestFor(b.id)}%
+                  </span>
+                )}
+                <h3>{b.subject}</h3>
+                <p>{b.description}</p>
+                <span className="count">{b.questions.length} questions →</span>
+              </button>
+            ))}
+          </section>
+        </main>
       ) : (
         <main>
           <section className="hero">
-            <p className="eyebrow">Civil Service Examination</p>
+            <p className="eyebrow">Philippine Licensure &amp; Government Exams</p>
             <h2>You&rsquo;ve got this.<br />Pass at <span className="gold">80%</span>.</h2>
             <p className="sub">
-              {total} original questions with explanations, patterned after the CSC
-              Professional exam scope. Pick a subject — shuffled every time.
+              Free practice quizzes with explanations for Philippine board and
+              government exams. Pick your exam — shuffled every time.
             </p>
             <svg className="flagmark" viewBox="0 0 300 200" aria-hidden="true">
               <rect x="0" y="0" width="300" height="100" fill="#0038A8" />
@@ -189,9 +264,9 @@ export default function App() {
                 {[0, 45, 90, 135, 180, 225, 270, 315].map((d) => (
                   <polygon key={d} points="62,68 58,84 66,84" transform={`rotate(${d} 62 100)`} />
                 ))}
-                <polygon points="20.0,13.0 22.1,19.1 28.6,19.2 23.4,23.1 25.3,29.3 20.0,25.6 14.7,29.3 16.6,23.1 11.4,19.2 17.9,19.1" />
-                <polygon points="20.0,169.0 22.1,175.1 28.6,175.2 23.4,179.1 25.3,185.3 20.0,181.6 14.7,185.3 16.6,179.1 11.4,175.2 17.9,175.1" />
-                <polygon points="140.0,91.0 142.1,97.1 148.6,97.2 143.4,101.1 145.3,107.3 140.0,103.6 134.7,107.3 136.6,101.1 131.4,97.2 137.9,97.1" />
+                <polygon points="20.0,13.0 22.1,19.1 28.6,19.2 23.4,23.1 25.3,29.3 20.0,25.5 14.7,29.3 16.6,23.1 11.4,19.2 17.9,19.1" />
+                <polygon points="20.0,169.0 22.1,175.1 28.6,175.2 23.4,179.1 25.3,185.3 20.0,181.5 14.7,185.3 16.6,179.1 11.4,175.2 17.9,175.1" />
+                <polygon points="140.0,91.0 142.1,97.1 148.6,97.2 143.4,101.1 145.3,107.3 140.0,103.5 134.7,107.3 136.6,101.1 131.4,97.2 137.9,97.1" />
               </g>
             </svg>
             <div className="sheet" aria-hidden="true">
@@ -201,20 +276,45 @@ export default function App() {
               <span className="sheet-note">shade your answer</span>
             </div>
             <div className="stats">
-              <span>{total} questions</span><span>4 subjects</span><span>80% passing</span><span>100% free</span>
+              <span>{total} questions</span><span>{EXAMS.filter(e=>!e.soon).length} exams live</span><span>80% passing</span><span>100% free</span>
             </div>
           </section>
-          <p className="pick">PICK A SUBJECT</p>
+          <p className="pick">PICK YOUR EXAM</p>
           <section className="grid">
-            {BANKS.map((b, i) => (
-              <button key={b.id} className="subject card" onClick={() => setBank(b)}>
-                <span className="sbubble" aria-hidden="true">{"ABCD"[i]}</span>
-                <h3>{b.subject}</h3>
-                <p>{b.description}</p>
-                <span className="count">{b.questions.length} questions →</span>
+            {EXAMS.map((e) => (
+              <button key={e.id} className="subject card exam-card" disabled={e.soon}
+                onClick={() => !e.soon && setExam(e)}>
+                <span className="agency">{e.agency}</span>
+                {e.soon && <span className="best">Coming soon</span>}
+                <h3>{e.name}</h3>
+                <p>{e.desc}</p>
+                {!e.soon && (
+                  <span className="count">
+                    {e.banks.reduce((n, b) => n + b.questions.length, 0)} questions →
+                  </span>
+                )}
               </button>
             ))}
           </section>
+          {history.length > 0 && (
+            <section className="card progress-card">
+              <div className="progress-head">
+                <p className="eyebrow">Your progress</p>
+                <button className="linklike" onClick={clearHistory}>Clear</button>
+              </div>
+              <ul className="attempts">
+                {history.slice(0, 6).map((h, idx) => (
+                  <li key={idx}>
+                    <span className={h.pct >= PASS ? "dot pass" : "dot"} aria-hidden="true" />
+                    <span className="a-subj">{h.subject}</span>
+                    <span className="a-score">{h.pct}%</span>
+                    <span className="a-meta">{h.right}/{h.total} · {fmtDate(h.ts)}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="a-note">Saved on this device only — no account needed.</p>
+            </section>
+          )}
         </main>
       )}
 
@@ -222,7 +322,7 @@ export default function App() {
         <div className="tricolor" aria-hidden="true"><span /><span /><span /></div>
         <p>
           ReviewPinas is a free, independent reviewer. Not affiliated with the
-          Civil Service Commission.
+          Civil Service Commission or the Professional Regulation Commission.
         </p>
       </footer>
     </div>

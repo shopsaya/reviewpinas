@@ -20,12 +20,17 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: var(--paper);
+  background: linear-gradient(180deg, #eef4ff 0%, var(--paper) 320px);
   color: var(--ink);
   font-family: Inter, system-ui, sans-serif;
   line-height: 1.55;
 }
-.page { max-width: 720px; margin: 0 auto; padding: 20px 16px 48px; }
+.page { max-width: 780px; margin: 0 auto; padding: 20px 16px 48px; position: relative; z-index: 1; }
+body::before {
+  content: ""; position: fixed; inset: -20%;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20300%20200%22%3E%3Crect%20width%3D%22300%22%20height%3D%22100%22%20fill%3D%22%230038A8%22%2F%3E%3Crect%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22100%22%20fill%3D%22%23CE1126%22%2F%3E%3Cpolygon%20points%3D%220%2C0%20173%2C100%200%2C200%22%20fill%3D%22%23ffffff%22%2F%3E%3Cg%20fill%3D%22%23FCD116%22%3E%3Ccircle%20cx%3D%2262%22%20cy%3D%22100%22%20r%3D%2217%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%280%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%2845%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%2890%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%28135%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%28180%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%28225%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%28270%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2262%2C68%2058%2C84%2066%2C84%22%20transform%3D%22rotate%28315%2062%20100%29%22%2F%3E%3Cpolygon%20points%3D%2220.0%2C13.0%2022.1%2C19.1%2028.6%2C19.2%2023.4%2C23.1%2025.3%2C29.3%2020.0%2C25.6%2014.7%2C29.3%2016.6%2C23.1%2011.4%2C19.2%2017.9%2C19.1%22%2F%3E%3Cpolygon%20points%3D%2220.0%2C169.0%2022.1%2C175.1%2028.6%2C175.2%2023.4%2C179.1%2025.3%2C185.3%2020.0%2C181.6%2014.7%2C185.3%2016.6%2C179.1%2011.4%2C175.2%2017.9%2C175.1%22%2F%3E%3Cpolygon%20points%3D%22140.0%2C91.0%20142.1%2C97.1%20148.6%2C97.2%20143.4%2C101.1%20145.3%2C107.3%20140.0%2C103.6%20134.7%2C107.3%20136.6%2C101.1%20131.4%2C97.2%20137.9%2C97.1%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") center / 950px no-repeat;
+  opacity: 0.05; transform: rotate(-8deg); pointer-events: none; z-index: 0;
+}
 
 /* Masthead */
 .masthead { display: flex; align-items: center; gap: 14px; padding: 8px 0 20px; }
@@ -41,7 +46,7 @@ body {
 
 /* Cards */
 .card {
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  background: rgba(255,255,255,0.93); border: 1px solid var(--line); border-radius: 14px;
   padding: 22px; box-shadow: 0 1px 3px rgba(0, 56, 168, 0.07);
 }
 .hero { border-top: 4px solid var(--sun); }
@@ -199,3 +204,62 @@ footer p { font-size: 12px; color: var(--ink-soft); text-align: center; }
 .tricolor span:nth-child(1) { flex: 1; background: var(--ph-blue); }
 .tricolor span:nth-child(2) { flex: 1; background: var(--ph-red); }
 .tricolor span:nth-child(3) { flex: 1; background: var(--sun); }
+
+/* ── Alive pass: tinted subject cards, tighter rhythm ── */
+.grid { margin-top: 8px; }
+.subject { border-top: 3px solid transparent; }
+.subject:nth-child(1) { border-top-color: var(--ph-blue);  background: rgba(243,248,255,0.93); }
+.subject:nth-child(2) { border-top-color: var(--ph-red);   background: rgba(255,246,247,0.93); }
+.subject:nth-child(3) { border-top-color: var(--sun);      background: rgba(255,251,232,0.93); }
+.subject:nth-child(4) { border-top-color: var(--ph-blue-d);background: rgba(240,244,255,0.93); }
+.subject:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,56,168,0.10); }
+.pick {
+  display: flex; align-items: center; gap: 12px;
+  margin: 18px 0 0; font-family: "IBM Plex Mono", monospace;
+  font-size: 11px; letter-spacing: 0.14em; color: var(--ink-soft);
+}
+.pick::before, .pick::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* ── Result share ── */
+.btn.share { background: var(--sun); color: var(--ph-blue-d); }
+.btn.share:hover { background: var(--sun-deep); color: #fff; }
+.tally {
+  font-family: "IBM Plex Mono", monospace; font-size: 13px;
+  color: var(--ink-soft); margin: 0 0 8px;
+}
+
+/* ── Progress tracking ── */
+.subject { position: relative; }
+.best {
+  position: absolute; top: 16px; right: 16px;
+  font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+  color: var(--ink-soft); background: rgba(0,0,0,0.05);
+  padding: 3px 8px; border-radius: 999px;
+}
+.best.pass { color: #fff; background: var(--good); }
+.progress-card { margin-top: 12px; }
+.progress-head { display: flex; justify-content: space-between; align-items: baseline; }
+.attempts { list-style: none; margin: 10px 0 6px; padding: 0; display: grid; gap: 8px; }
+.attempts li {
+  display: flex; align-items: baseline; gap: 10px; font-size: 14px;
+  border-bottom: 1px dashed var(--line); padding-bottom: 8px;
+}
+.attempts li:last-child { border-bottom: none; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); align-self: center; flex-shrink: 0; }
+.dot.pass { background: var(--good); }
+.a-subj { flex: 1; font-weight: 500; }
+.a-score { font-family: "IBM Plex Mono", monospace; font-weight: 600; color: var(--ph-blue); }
+.a-meta { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-soft); }
+.a-note { font-size: 12px; color: var(--ink-soft); margin: 4px 0 0; }
+
+/* ── Exam categories ── */
+.agency {
+  display: inline-block; font-family: "IBM Plex Mono", monospace;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  color: #fff; background: var(--ph-blue);
+  padding: 3px 8px; border-radius: 999px; margin-bottom: 10px;
+}
+.exam-card:disabled { opacity: 0.6; cursor: default; }
+.exam-card:disabled:hover { transform: none; box-shadow: none; }
+.exam-card:nth-child(odd) .agency { background: var(--ph-blue); }
+.exam-card:nth-child(even) .agency { background: var(--ph-red); }
