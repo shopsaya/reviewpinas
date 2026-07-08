@@ -73,19 +73,35 @@ function Quiz({ bank, onExit }) {
     const right = answers.filter((a) => a.correct).length;
     const pct = Math.round((right / questions.length) * 100);
     const passed = pct >= PASS;
+    const share = async () => {
+      const text = passed
+        ? `I scored ${pct}% on the ${bank.subject} practice test — cleared the 80% CSC passing mark! 🇵🇭 Try it, it's free:`
+        : `Practicing ${bank.subject} for the CSC exam. It's free — try it too:`;
+      const url = "https://reviewpinas.com";
+      if (navigator.share) {
+        try { await navigator.share({ title: "ReviewPinas", text, url }); return; } catch (e) { /* cancelled */ }
+      }
+      window.open(
+        "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) +
+        "&quote=" + encodeURIComponent(text),
+        "_blank", "noopener,width=600,height=480"
+      );
+    };
     return (
       <section className="card result">
         <p className="eyebrow">{bank.subject}</p>
         <Gauge pct={pct} />
         <h2 className="score">{pct}%</h2>
+        <p className="tally">{right} correct out of {questions.length}</p>
         <p className={passed ? "verdict pass" : "verdict"}>
           {passed
-            ? "Pasado! You cleared the 80% CSC passing mark on this set."
-            : `${right} of ${questions.length} correct. The CSC passing rate is ${PASS}% — keep practicing.`}
+            ? "You passed! You cleared the 80% CSC passing mark. Great work!"
+            : `Almost there — passing is ${PASS}%. Try again, you've got this!`}
         </p>
         <div className="row">
+          <button className="btn share" onClick={share}>Share my score</button>
           <button className="btn" onClick={() => { setI(0); setPicked(null); setAnswers([]); setDone(false); }}>
-            Retake this subject
+            Retake
           </button>
           <button className="btn ghost" onClick={onExit}>All subjects</button>
         </div>
@@ -96,7 +112,7 @@ function Quiz({ bank, onExit }) {
   return (
     <section className="card">
       <div className="quiz-top">
-        <button className="linklike" onClick={onExit}>← Subjects</button>
+        <button className="linklike" onClick={onExit}>← Back</button>
         <span className="counter">{i + 1} / {questions.length}</span>
       </div>
       <div className="progress"><div style={{ width: `${(i / questions.length) * 100}%` }} /></div>
@@ -116,7 +132,7 @@ function Quiz({ bank, onExit }) {
       </div>
       {answered && (
         <div className={picked === q.answer ? "explain good" : "explain"}>
-          <strong>{picked === q.answer ? "Tama!" : "Not quite."}</strong> {q.explanation}
+          <strong>{picked === q.answer ? "Correct!" : "Not quite."}</strong> {q.explanation}
         </div>
       )}
       {answered && (
@@ -149,7 +165,7 @@ export default function App() {
         </div>
         <div>
           <h1>ReviewPinas</h1>
-          <p className="tagline">Libreng CSC reviewer · walang sign-up · works offline</p>
+          <p className="tagline">Free CSC reviewer · no sign-up · works offline</p>
         </div>
       </header>
 
@@ -159,10 +175,10 @@ export default function App() {
         <main>
           <section className="hero">
             <p className="eyebrow">Civil Service Examination</p>
-            <h2>Kaya mo &lsquo;to.<br />Pasado at <span className="gold">80%</span>.</h2>
+            <h2>You&rsquo;ve got this.<br />Pass at <span className="gold">80%</span>.</h2>
             <p className="sub">
-              {total} original na tanong with explanations, patterned after the CSC
-              Professional exam scope. Pumili ng subject — shuffled every time.
+              {total} original questions with explanations, patterned after the CSC
+              Professional exam scope. Pick a subject — shuffled every time.
             </p>
             <svg className="flagmark" viewBox="0 0 300 200" aria-hidden="true">
               <rect x="0" y="0" width="300" height="100" fill="#0038A8" />
@@ -185,9 +201,10 @@ export default function App() {
               <span className="sheet-note">shade your answer</span>
             </div>
             <div className="stats">
-              <span>{total} tanong</span><span>4 subjects</span><span>80% passing</span><span>100% libre</span>
+              <span>{total} questions</span><span>4 subjects</span><span>80% passing</span><span>100% free</span>
             </div>
           </section>
+          <p className="pick">PICK A SUBJECT</p>
           <section className="grid">
             {BANKS.map((b, i) => (
               <button key={b.id} className="subject card" onClick={() => setBank(b)}>
@@ -204,9 +221,8 @@ export default function App() {
       <footer>
         <div className="tricolor" aria-hidden="true"><span /><span /><span /></div>
         <p>
-          ReviewPinas is an independent study tool by MSB IT Solutions. It is
-          not affiliated with or endorsed by the Civil Service Commission. All
-          questions are original practice material.
+          ReviewPinas is a free, independent reviewer. Not affiliated with the
+          Civil Service Commission.
         </p>
       </footer>
     </div>
