@@ -76,33 +76,46 @@ function Gauge({ pct }) {
 
 // ── Quiz ──────────────────────────────────────────────────────────────────────
 function Quiz({ bank, onExit, onFinish }) {
-  const questions = useMemo(() => shuffle(bank.questions), [bank]);
+  const [round, setRound] = useState(0);
+  // fresh shuffle of BOTH question order and option order every attempt
+  const questions = useMemo(() => {
+    return shuffle(bank.questions).map((q) => {
+      const order = shuffle(q.options.map((_, idx) => idx));
+      return {
+        ...q,
+        options: order.map((oi) => q.options[oi]),
+        answer: order.indexOf(q.answer),
+      };
+    });
+  }, [bank, round]);
+
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState(null);
-  const [answers, setAnswers] = useState([]); // {correct: bool}
+  const [answers, setAnswers] = useState([]); // { picked, correct }
   const [done, setDone] = useState(false);
 
-  const q = questions[i];
-  const answered = picked !== null;
-
-  const choose = (idx) => {
-    if (answered) return;
-    setPicked(idx);
-    setAnswers((a) => [...a, { correct: idx === q.answer }]);
+  const restart = () => {
+    setRound((r) => r + 1);
+    setI(0); setPicked(null); setAnswers([]); setDone(false);
   };
+
   const next = () => {
+    if (picked === null) return;
+    const record = [...answers, { picked, correct: picked === questions[i].answer }];
+    setAnswers(record);
+    setPicked(null);
     if (i + 1 >= questions.length) {
-      const right = answers.filter((a) => a.correct).length;
+      const right = record.filter((a) => a.correct).length;
       onFinish({
         id: bank.id, subject: bank.subject,
         right, total: questions.length,
         pct: Math.round((right / questions.length) * 100),
         ts: Date.now(),
       });
-      return setDone(true);
+      setDone(true);
+    } else {
+      setI(i + 1);
     }
-    setI(i + 1);
-    setPicked(null);
   };
 
   if (done) {
@@ -111,8 +124,8 @@ function Quiz({ bank, onExit, onFinish }) {
     const passed = pct >= PASS;
     const share = async () => {
       const text = passed
-        ? `I scored ${pct}% on the ${bank.subject} practice test — cleared the 80% CSC passing mark! 🇵🇭 Try it, it's free:`
-        : `Practicing ${bank.subject} for the CSC exam. It's free — try it too:`;
+        ? `I scored ${pct}% on the ${bank.subject} practice test — cleared the 80% passing mark! 🇵🇭 Try it, it's free:`
+        : `Practicing ${bank.subject} on ReviewPinas. It's free — try it too:`;
       const url = "https://reviewpinas.com";
       if (navigator.share) {
         try { await navigator.share({ title: "ReviewPinas", text, url }); return; } catch (e) { /* cancelled */ }
@@ -131,20 +144,41 @@ function Quiz({ bank, onExit, onFinish }) {
         <p className="tally">{right} correct out of {questions.length}</p>
         <p className={passed ? "verdict pass" : "verdict"}>
           {passed
-            ? "You passed! You cleared the 80% CSC passing mark. Great work!"
-            : `Almost there — passing is ${PASS}%. Try again, you've got this!`}
+            ? "You passed! You cleared the 80% passing mark. Great work!"
+            : `Almost there — passing is ${PASS}%. Review your answers below, then try again.`}
         </p>
         <div className="row">
           <button className="btn share" onClick={share}>Share my score</button>
-          <button className="btn" onClick={() => { setI(0); setPicked(null); setAnswers([]); setDone(false); }}>
-            Retake
-          </button>
+          <button className="btn" onClick={restart}>Retake</button>
           <button className="btn ghost" onClick={onExit}>All subjects</button>
+        </div>
+
+        <div className="review">
+          <p className="pick">ANSWER REVIEW</p>
+          {questions.map((q, qi) => {
+            const a = answers[qi];
+            return (
+              <div key={qi} className={a.correct ? "rev-item good" : "rev-item"}>
+                <p className="rev-q"><span className="rev-num">{qi + 1}.</span> {q.q}</p>
+                <p className="rev-a">
+                  Your answer: <strong>{"ABCD"[a.picked]}. {q.options[a.picked]}</strong>
+                  {a.correct ? " ✓" : " ✗"}
+                </p>
+                {!a.correct && (
+                  <p className="rev-a correct-a">
+                    Correct answer: <strong>{"ABCD"[q.answer]}. {q.options[q.answer]}</strong>
+                  </p>
+                )}
+                <p className="rev-x">{q.explanation}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     );
   }
 
+  const q = questions[i];
   return (
     <section className="card">
       <div className="quiz-top">
@@ -155,27 +189,17 @@ function Quiz({ bank, onExit, onFinish }) {
       <p className="eyebrow">{bank.subject}</p>
       <h2 className="question">{q.q}</h2>
       <div className="options">
-        {q.options.map((opt, idx) => {
-          let cls = "option";
-          if (answered && idx === q.answer) cls += " correct";
-          else if (answered && idx === picked) cls += " wrong";
-          return (
-            <button key={idx} className={cls} onClick={() => choose(idx)} disabled={answered}>
-              <span className="opt-letter">{"ABCD"[idx]}</span> {opt}
-            </button>
-          );
-        })}
+        {q.options.map((opt, idx) => (
+          <button key={idx}
+            className={idx === picked ? "option selected" : "option"}
+            onClick={() => setPicked(idx)}>
+            <span className="opt-letter">{"ABCD"[idx]}</span> {opt}
+          </button>
+        ))}
       </div>
-      {answered && (
-        <div className={picked === q.answer ? "explain good" : "explain"}>
-          <strong>{picked === q.answer ? "Correct!" : "Not quite."}</strong> {q.explanation}
-        </div>
-      )}
-      {answered && (
-        <button className="btn wide" onClick={next}>
-          {i + 1 >= questions.length ? "See my score" : "Next question"}
-        </button>
-      )}
+      <button className="btn wide" onClick={next} disabled={picked === null}>
+        {i + 1 >= questions.length ? "Submit answers" : "Next question"}
+      </button>
     </section>
   );
 }
