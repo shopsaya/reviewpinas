@@ -1,0 +1,117 @@
+{
+  "subject": "Criminology Basics",
+  "id": "crim",
+  "description": "Criminal law, statutes, and law enforcement fundamentals.",
+  "questions": [
+    {
+      "q": "RA 9165 is known as the:",
+      "options": [
+        "Anti-Hazing Law",
+        "Comprehensive Dangerous Drugs Act of 2002",
+        "Human Security Act",
+        "Anti-Carnapping Act"
+      ],
+      "answer": 1,
+      "explanation": "RA 9165 (2002) is the Comprehensive Dangerous Drugs Act."
+    },
+    {
+      "q": "Which law created the Philippine National Police?",
+      "options": [
+        "RA 6975",
+        "RA 9165",
+        "RA 7610",
+        "RA 3019"
+      ],
+      "answer": 0,
+      "explanation": "RA 6975 (1990), the DILG Act, established the PNP."
+    },
+    {
+      "q": "Crimes that are wrong because they are prohibited by law, not inherently evil, are called:",
+      "options": [
+        "Mala in se",
+        "Mala prohibita",
+        "Felonies",
+        "Quasi-offenses"
+      ],
+      "answer": 1,
+      "explanation": "Mala prohibita are wrong only because a statute forbids them; mala in se are inherently immoral."
+    },
+    {
+      "q": "The body of the crime, or the fact that a crime was actually committed, is the:",
+      "options": [
+        "Modus operandi",
+        "Corpus delicti",
+        "Prima facie",
+        "Res gestae"
+      ],
+      "answer": 1,
+      "explanation": "Corpus delicti literally means the body of the crime."
+    },
+    {
+      "q": "Under the Revised Penal Code, criminal liability is incurred by any person committing a felony although the wrongful act be different from that intended. This illustrates:",
+      "options": [
+        "Praeter intentionem",
+        "Error in personae",
+        "Aberratio ictus",
+        "All of the above"
+      ],
+      "answer": 3,
+      "explanation": "All three doctrines fall under Art. 4 — liability despite a result different from intent."
+    },
+    {
+      "q": "The scientific study of crime, criminals, and criminal behavior is:",
+      "options": [
+        "Penology",
+        "Criminology",
+        "Criminalistics",
+        "Victimology"
+      ],
+      "answer": 1,
+      "explanation": "Criminology studies crime and criminal behavior; criminalistics applies science to evidence."
+    },
+    {
+      "q": "Who is regarded as the father of modern criminology?",
+      "options": [
+        "Cesare Beccaria",
+        "Cesare Lombroso",
+        "Emile Durkheim",
+        "Edwin Sutherland"
+      ],
+      "answer": 1,
+      "explanation": "Lombroso, for his positivist studies of the criminal man; Beccaria founded the classical school."
+    },
+    {
+      "q": "RA 8551 is known as the:",
+      "options": [
+        "PNP Reform and Reorganization Act of 1998",
+        "Probation Law",
+        "Juvenile Justice Act",
+        "Fire Code"
+      ],
+      "answer": 0,
+      "explanation": "RA 8551 (1998) reformed and reorganized the PNP."
+    },
+    {
+      "q": "A police officer may arrest without a warrant when:",
+      "options": [
+        "The person is about to commit, is committing, or has just committed an offense in his presence",
+        "He suspects the person from rumors",
+        "The person looks nervous",
+        "He received an anonymous text"
+      ],
+      "answer": 0,
+      "explanation": "In flagrante delicto arrest is a recognized warrantless arrest under Rule 113."
+    },
+    {
+      "q": "The study of punishment and prison management is called:",
+      "options": [
+        "Sociology",
+        "Penology",
+        "Etiology",
+        "Demonology"
+      ],
+      "answer": 1,
+      "explanation": "Penology deals with punishment and correctional administration."
+    }
+  ]
+}

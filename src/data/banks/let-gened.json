@@ -1,0 +1,117 @@
+{
+  "subject": "General Education",
+  "id": "let-gened",
+  "description": "Math, English, and reading — LET common coverage.",
+  "questions": [
+    {
+      "q": "What is 25% of 640?",
+      "options": [
+        "150",
+        "160",
+        "170",
+        "180"
+      ],
+      "answer": 1,
+      "explanation": "640 × 0.25 = 160."
+    },
+    {
+      "q": "Compute: 5/8 − 1/4.",
+      "options": [
+        "1/2",
+        "3/8",
+        "1/4",
+        "4/8"
+      ],
+      "answer": 1,
+      "explanation": "5/8 − 2/8 = 3/8."
+    },
+    {
+      "q": "A class of 5 students got scores of 45, 45, 45, 60, and 60. What is the mean score?",
+      "options": [
+        "48",
+        "50",
+        "51",
+        "54"
+      ],
+      "answer": 2,
+      "explanation": "(45×3 + 60×2) ÷ 5 = 255 ÷ 5 = 51."
+    },
+    {
+      "q": "Which is the correct sentence?",
+      "options": [
+        "The teacher, along with her students, are in the room.",
+        "The teacher, along with her students, is in the room.",
+        "The teacher along with her students were in the room.",
+        "The teacher, along with her students, be in the room."
+      ],
+      "answer": 1,
+      "explanation": "The subject is \"the teacher\" (singular); the phrase after \"along with\" does not change the verb."
+    },
+    {
+      "q": "Choose the word closest in meaning to LUCID.",
+      "options": [
+        "confusing",
+        "clear",
+        "heavy",
+        "rare"
+      ],
+      "answer": 1,
+      "explanation": "Lucid means clear and easy to understand."
+    },
+    {
+      "q": "Find the next term: 3, 6, 12, 24, ___",
+      "options": [
+        "36",
+        "40",
+        "48",
+        "54"
+      ],
+      "answer": 2,
+      "explanation": "Each term doubles: 24 × 2 = 48."
+    },
+    {
+      "q": "A rectangle has a perimeter of 36 cm and a length of 11 cm. What is its width?",
+      "options": [
+        "7 cm",
+        "8 cm",
+        "9 cm",
+        "14 cm"
+      ],
+      "answer": 0,
+      "explanation": "P = 2(l + w): 36 = 2(11 + w) → w = 7."
+    },
+    {
+      "q": "Which punctuation is correct?",
+      "options": [
+        "Its raining outside.",
+        "It's raining outside.",
+        "Its' raining outside.",
+        "Its raining, outside."
+      ],
+      "answer": 1,
+      "explanation": "\"It's\" is the contraction of \"it is.\""
+    },
+    {
+      "q": "What is the value of x if 2x + 5 = 17?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer": 1,
+      "explanation": "2x = 12, so x = 6."
+    },
+    {
+      "q": "Choose the OPPOSITE of SCARCE.",
+      "options": [
+        "rare",
+        "limited",
+        "abundant",
+        "few"
+      ],
+      "answer": 2,
+      "explanation": "Abundant means plentiful — the opposite of scarce."
+    }
+  ]
+}

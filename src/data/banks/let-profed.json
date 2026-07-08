@@ -1,0 +1,117 @@
+{
+  "subject": "Professional Education",
+  "id": "let-profed",
+  "description": "Learning theories, assessment, and pedagogy.",
+  "questions": [
+    {
+      "q": "In Bloom's taxonomy, which is the HIGHEST level of the cognitive domain (revised version)?",
+      "options": [
+        "Applying",
+        "Analyzing",
+        "Evaluating",
+        "Creating"
+      ],
+      "answer": 3,
+      "explanation": "The revised taxonomy orders: remember, understand, apply, analyze, evaluate, create — creating is highest."
+    },
+    {
+      "q": "A teacher gives a short quiz BEFORE the lesson to find out what students already know. This is:",
+      "options": [
+        "Summative assessment",
+        "Diagnostic assessment",
+        "Authentic assessment",
+        "Norm-referenced assessment"
+      ],
+      "answer": 1,
+      "explanation": "Diagnostic assessment identifies prior knowledge before instruction."
+    },
+    {
+      "q": "Which theorist is associated with the Zone of Proximal Development?",
+      "options": [
+        "Piaget",
+        "Vygotsky",
+        "Skinner",
+        "Bandura"
+      ],
+      "answer": 1,
+      "explanation": "Vygotsky proposed the ZPD — what a learner can do with guidance."
+    },
+    {
+      "q": "Positive reinforcement means:",
+      "options": [
+        "Removing a pleasant stimulus",
+        "Adding an unpleasant stimulus",
+        "Adding a pleasant stimulus to strengthen behavior",
+        "Ignoring behavior"
+      ],
+      "answer": 2,
+      "explanation": "Positive reinforcement adds a desirable consequence to increase a behavior."
+    },
+    {
+      "q": "Which is an example of a FORMATIVE assessment?",
+      "options": [
+        "Final examination",
+        "Periodic test",
+        "Exit ticket at the end of a lesson",
+        "National achievement test"
+      ],
+      "answer": 2,
+      "explanation": "Formative assessment monitors learning during instruction, like exit tickets."
+    },
+    {
+      "q": "Piaget's stage in which children develop abstract reasoning is the:",
+      "options": [
+        "Sensorimotor stage",
+        "Preoperational stage",
+        "Concrete operational stage",
+        "Formal operational stage"
+      ],
+      "answer": 3,
+      "explanation": "Formal operational (about age 11+) involves abstract and hypothetical thinking."
+    },
+    {
+      "q": "A lesson objective that begins with \"identify\" targets which cognitive level?",
+      "options": [
+        "Creating",
+        "Remembering/Understanding",
+        "Evaluating",
+        "Synthesizing"
+      ],
+      "answer": 1,
+      "explanation": "\"Identify\" asks learners to recall or recognize — a lower-order objective."
+    },
+    {
+      "q": "Bandura's social learning theory emphasizes learning through:",
+      "options": [
+        "Trial and error",
+        "Observation and modeling",
+        "Classical conditioning",
+        "Maturation alone"
+      ],
+      "answer": 1,
+      "explanation": "Bandura showed people learn by observing models."
+    },
+    {
+      "q": "Which classroom practice reflects learner-centered teaching?",
+      "options": [
+        "Lecturing the whole period",
+        "Students discover rules through guided activities",
+        "Copying notes from the board",
+        "Teacher answers all questions herself"
+      ],
+      "answer": 1,
+      "explanation": "Learner-centered classrooms make students active constructors of knowledge."
+    },
+    {
+      "q": "Intrinsic motivation is best illustrated by a student who studies because:",
+      "options": [
+        "A reward is promised",
+        "He fears punishment",
+        "He enjoys learning the subject",
+        "Classmates force him"
+      ],
+      "answer": 2,
+      "explanation": "Intrinsic motivation comes from interest in the activity itself."
+    }
+  ]
+}
